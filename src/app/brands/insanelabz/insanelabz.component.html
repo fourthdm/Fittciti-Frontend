@@ -1,0 +1,69 @@
+<br> <br> <br>
+
+<div class="container">
+    <br><br>
+    <div class="row">
+        <div class="col-3">
+            <h5>Category</h5>
+            <div class="card1">
+                <div class="card-header">
+                    <b>All Categories</b>
+                </div>
+                <div class="card-body">
+
+
+                    <select class="form-select form-select-lg" class="form-select" size="5s"
+                        aria-label="Size  select example">
+                        <!-- <option selected><b>All Categories</b></option> -->
+                        <option *ngFor="let c of category, let i=index">{{c.Categories_Name }}</option>
+
+                    </select>
+
+                    <!-- <div class="div">
+                        <input type="checkbox"> <label for="">{{c.Categories_Name }}</label>
+                    </div> -->
+                </div>
+            </div>
+            <br>
+            <h5>Brands</h5>
+            <div class="card1">
+                <div class="card-body">
+                    <select class="form-select form-select-lg" aria-label="Large select example">
+                        <option selected><b>All Brand's</b></option>
+                        <option *ngFor="let c of brands, let i=index" [value]="c.Brand_id">{{c.Brand_Name }}
+                        </option>
+
+                    </select>
+                    <br><br>
+                    <!-- <div class="div" *ngFor="let c of brands, let i=index">
+                        <input type="checkbox"> <label for="">{{c.Brand_Name }}</label>
+                    </div> -->
+                </div>
+            </div>
+            <br><br>
+
+            <!-- <button (click)="filter()" class="btn btn-primary mt-4">Filter</button> -->
+        </div><br>
+        <div class="col-lg-4 col-md-6" *ngFor="let p of product , let i=index">
+            <div class="container">
+                <div class="card">
+                    <div class="">
+                        <img [src]="p.Imageurl" [routerLink]="['/viewproduct']">
+                        <div class="card-body">
+
+                            <p>{{p.Product_Name}}
+                                <br>
+                                <span>{{p.Weight}}</span>
+                            </p>
+                            <p>Rs {{p.Price}} </p>
+
+                            <button class="btn btn-secondary"><i class="fa-solid fa-cart-plus fa-lg"></i>
+                                Add To Cart</button>
+                        </div>
+                    </div>
+                </div> <br>
+            </div>
+        </div> <br>
+    </div>
+
+</div>

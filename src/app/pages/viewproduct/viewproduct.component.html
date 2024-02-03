@@ -1,0 +1,100 @@
+<div class="main">
+    <br><br><br><br><br>
+    <div class="container">
+        <div class="row" *ngFor="let p of products, let i=index">
+            <br>
+            <div class="col-md-6">
+                <div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+                    <!-- Indicators -->
+                    <div class="carousel-indicators" style="margin-bottom: -15px;">
+                        <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1">
+                            <img [src]="p.image" width="100%" alt="">
+
+                        </button>
+                        <div class="card" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="1"
+                            aria-label="Slide 2">
+                            <img [src]="p.mainimage" width="100%" alt="">
+
+                        </div>
+                        <div class="card" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="2"
+                            aria-label="Slide 3">
+                            <img [src]="p.backimage" width="100%" alt="">
+                        </div>
+
+                        <!-- <div class="card" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="3"
+                        aria-label="Slide 4">
+                        <img [src]="p.image3" width="100%" alt="">
+                    </div> -->
+
+
+                    </div>
+
+                    <!-- Inner -->
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+                            <img [src]="p.image" width="100%" alt="">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img [src]="p.mainimage" width="100%" alt="">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img [src]="p.backimage" width="100%" alt="">
+                        </div>
+
+                        <!-- <div class="carousel-item">
+                        <img [src]="p.image3" width="100%" alt="">
+                    </div> -->
+
+                    </div>
+                    <!-- Inner -->
+                    <br>
+                    <!-- Controls -->
+                    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample"
+                        data-mdb-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample"
+                        data-mdb-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <br><br>
+            </div>
+
+            <div class="col-md-6">
+                <br>
+                <h4 class="card-title"><b>{{p.productname}}</b></h4> <br><br>
+                <h6>{{p.weight}}SER</h6>
+                <h4>&#8377; {{p.price}}</h4>
+
+                <br>
+                <!-- <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <button class="btn btn-light" (click)="handlequantity('min')">
+                        <h5>-</h5>
+                    </button>
+                    <button type="button" class="btn  btn-secondary"><b>{{pq}}</b></button>
+                    <button class="btn btn-light" (click)="handlequantity('plus')">
+                        <h5>+</h5>
+                    </button>
+                </div> -->
+                <br> <br>
+                <button class="btn btn-lg btn-info"><i class="fa-solid fa-cart-plus fa-lg"></i>
+                    <b> Add To Cart </b></button>
+                <br>
+            </div>
+            <h5> <b>Description :</b></h5>
+            <p>{{p.description}}</p> <br>
+            <h5><b>Ingredients :</b></h5>
+            <p>{{p.ingredients}}</p>
+            <br>
+            <h5><b>Benefits:</b></h5>
+            <p>{{p.benefits}}</p>
+        </div>
+    </div>
+</div>

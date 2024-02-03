@@ -1,0 +1,26 @@
+.nav-link {
+    color: white;
+}
+
+.ncenter{
+    padding-inline-start: 20rem;
+}
+
+@media(max-width:1024px){
+    .ncenter{
+        padding-inline-start: 10%;
+    }
+}
+
+
+i{
+    color: white;
+}
+
+p{
+    color: white;
+}
+
+img{
+    width: 100%;
+}

@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg fixed-top" style="background-color: #11141f;">
+    <div class="container">
+        <a class="navbar-brand" href=""><img src="/assets/logo.png" height="75" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ncenter" (click)="closeNavbar()">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" [routerLink]="['']">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" (click)="scroll()" [routerLink]="['/about']">About Us</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" (click)="scroll()" [routerLink]="['/product']">Product</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" (click)="scroll()" [routerLink]="['/testimonials']"> Testimonial</a>
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link" (click)="scroll()" [routerLink]="['/contact']">Contact Us</a>
+                </li>
+            </ul>
+            <div class="d-flex" role="">
+                <p>Pune <i class="fa-solid fa-user fa-xl" [routerLink]="['/login']"></i></p>
+                <p><a href="" [routerLink]="['/cart']"> <i class=" fa-solid fa-cart-plus
+                        fa-xl"> <sup style="color: red;">{{totalitems}}</sup></i>
+                    </a></p>
+            </div>
+        </div>
+    </div>
+</nav>
