@@ -11,7 +11,7 @@ declare var Razorpay: any;
 })
 export class CartsComponent implements OnInit {
 
-  pq: number = 1;
+  Product_id: number = 1;
   pro: any;
   showproduct: any[] = [];
   public grandTotal !: number;
@@ -26,12 +26,13 @@ export class CartsComponent implements OnInit {
   }
 
   handlequantity(val: string) {
-    if (this.pq < 100 && val === 'plus') {
-      this.pq += 1;
+    if (this.Product_id < 100 && val === 'plus') {
+      this.Product_id += 1;
       this.grandTotal
     }
-    else if (this.pq > 1 && val === 'min') {
-      this.pq -= 1;
+    else if (this.Product_id > 1 && val === 'min') {
+      this.Product_id
+       -= 1;
     }
   }
 
