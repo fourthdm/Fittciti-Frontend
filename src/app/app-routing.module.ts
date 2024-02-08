@@ -31,6 +31,8 @@ import { ViewproductComponent } from './pages/viewproduct/viewproduct.component'
 import { BuildsComponent } from './brands/builds/builds.component';
 import { CartsComponent } from './pages/carts/carts.component';
 import { CartsssComponent } from './common/cartsss/cartsss.component';
+import { RegisterComponent } from './common/register/register.component';
+import { UserdetailsComponent } from './common/userdetails/userdetails.component';
 
 
 const routes: Routes = [
@@ -39,7 +41,9 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'product', component: ProductComponent },
   { path: 'testimonials', component: TestimonialsComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'userdetails', component: UserdetailsComponent },
   { path: 'cart', component: CartsComponent },
   { path: 'Cartts', component: CartsssComponent },
 

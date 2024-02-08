@@ -1,16 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { StateService } from './state.service';
+import { RestService } from './rest.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  public cartitems: any = [];
+  public cartitems: any[] = [];
   public cartslist = new BehaviorSubject<any>([])
 
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient, private _state: StateService,private _rest:RestService) { }
+
+
   getProducts() {
     return this.cartslist.asObservable();
   }
@@ -33,6 +37,10 @@ export class CartService {
     this.cartslist.next(this.cartitems);
     this.getTotalPrice();
     console.log(this.cartitems)
+  }
+
+  add() {
+
   }
 
   // remove single item

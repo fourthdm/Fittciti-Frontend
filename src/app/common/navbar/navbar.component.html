@@ -30,8 +30,10 @@
                 </li>
             </ul>
             <div class="d-flex" role="">
-                <p>Pune <i class="fa-solid fa-user fa-xl" [routerLink]="['/login']"></i></p>
-                <p><a href="" [routerLink]="['/cart']"> <i class=" fa-solid fa-cart-plus
+                <button type="button" class="btn btn-secondary btn-sm" [routerLink]="['/register']">Register</button>
+                <button type="button" class="btn btn-info btn-sm" [routerLink]="['/login']"><b>Login</b></button>
+                <!-- <p>Pune <i class="fa-solid fa-user fa-xl" [routerLink]="['/login']"></i></p> -->
+                <p><a href="" [routerLink]="['/Cartts']"> <i class=" fa-solid fa-cart-plus
                         fa-xl"> <sup style="color: red;">{{totalitems}}</sup></i>
                     </a></p>
             </div>

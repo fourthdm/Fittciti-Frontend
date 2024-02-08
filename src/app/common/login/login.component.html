@@ -1,113 +1,56 @@
 <div class="main"><br>
-
+    <br><br>
     <section class="h-100 gradient-form">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-10">
                     <div>
                         <div class="row g-0">
-                            <div class="col-lg-5">
+                            <div class="col-md-2"></div>
+                            <div class="col-lg-8">
                                 <div class="card">
                                     <div class="card-body p-md-5 mx-md-4">
 
                                         <div class="text-center">
-                                            <!-- <img src="/assets/logo.png" style="width: 185px;" alt="logo">  -->
-
                                             <h3>Login</h3> <br>
                                             <h4>
                                                 <p>Please Login to Your Account</p>
                                             </h4>
                                         </div>
-                                        <form>
+                                        <form [formGroup]="Loginform" (submit)="Login()">
                                             <div class="col-md-12">
-                                                <label for="name"> Username :</label>
-                                                <input type="text" class="form-control" id="Name" formControlName="Name"
-                                                    value="" placeholder="Enter Username" required>
+                                                <label for="Username"> Username :</label>
+                                                <input type="text" class="form-control" id="Username" autocomplete="username"
+                                                    formControlName="Username" value="" placeholder="Enter Username"
+                                                    required>
                                                 <div class="valid-feedback">
                                                     Your Name
                                                 </div>
                                             </div><br>
 
                                             <div class="col-md-12">
-                                                <label for="name">Password :</label>
-                                                <input type="email" class="form-control" id="validationCustom03"
-                                                    id="Email" formControlName="Email" placeholder="Enter Password"
-                                                    required>
+                                                <label for="Password">Password :</label>
+                                                <input [type]="liked ? 'text' : 'password'" type="Password" class="form-control" id="validationCustom03"
+                                                    id="Password" formControlName="Password"
+                                                    placeholder="Enter Password" required>
+                                                    <span    [ngClass]="{
+                                                        'fa-eye-slash': !liked,
+                                                        'fa-eye': liked
+                                                      }"
+                                                      (click)="Show()"> <i class="fa-solid fa-eye-slash"></i></span>
                                             </div>
                                             <br>
 
                                             <div class="text-center pt-1 mb-5 pb-1">
                                                 <button class="btn btn-success btn-block fa-lg gradient-custom-2 mb-3"
-                                                    type="button">Log
-                                                    in</button>
-                                                <a class="text-muted" href="#!">Forgot password?</a>
+                                                    type="submit">Log in</button>
                                             </div>
                                         </form>
                                         <br>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-5">
-                                <div class="card">
-                                    <div class="card-body p-md-5 mx-md-4">
-                                        <div class="container"> 
-                                            <div class="text-center">
-                                                <h3>Register</h3><br>
-                                                <h4>
-                                                    <p>Create New Account</p> 
-                                                </h4>
-                                                <!-- <img src="/assets/logo.png" style="width: 185px;" alt="logo"> -->
-                                            </div>
-                                            <form>
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-12">
-                                                    <label for="name"> Name :</label>
-                                                    <input type="text" class="form-control" id="Name"
-                                                        formControlName="Name" value="" placeholder="Enter Your Name "
-                                                        required>
-                                                    <div class="valid-feedback">
-                                                        Your Name
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-1"></div>
 
-                                                <div class="col-md-12">
-                                                    <label for="name">Email ID :</label>
-                                                    <input type="email" class="form-control" id="validationCustom03"
-                                                        id="Email" formControlName="Email"
-                                                        placeholder="Enter Your Email Address.." required>
-                                                </div>
-                                                <br>
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-1"></div>
-
-                                                <div class="col-md-12">
-                                                    <label for="name"> Contact No. :</label>
-                                                    <input type="number" class="form-control" id="validationCustom02"
-                                                        value="" id="Mobileno" formControlName="Mobileno"
-                                                        placeholder="Enter your Mobile number" required>
-                                                    <div class="valid-feedback">
-                                                        Your number
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <div class="col-md-1"></div>
-
-                                                <div class="col-md-1"></div>
-
-                                                <div class="col-md-12" style="text-align: center;">
-                                                    <button class="btn btn-success" style="color: white;" type="submit">
-                                                        Submit Now</button> <br> <br>
-                                                </div>
-                                                <br><br>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

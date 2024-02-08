@@ -45,6 +45,9 @@ import { BuildsComponent } from './brands/builds/builds.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { CartsComponent } from './pages/carts/carts.component';
 import { CartsssComponent } from './common/cartsss/cartsss.component';
+import { RegisterComponent } from './common/register/register.component';
+import { OrderComponent } from './common/order/order.component';
+import { UserdetailsComponent } from './common/userdetails/userdetails.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +86,10 @@ import { CartsssComponent } from './common/cartsss/cartsss.component';
     ViewproductComponent,
     BuildsComponent,
     CartsComponent,
-    CartsssComponent
+    CartsssComponent,
+    RegisterComponent,
+    OrderComponent,
+    UserdetailsComponent
   ],
   imports: [
     BrowserModule,

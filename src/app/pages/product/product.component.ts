@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart.service';
 import { RestService } from 'src/app/rest.service';
 import { CartsComponent } from '../carts/carts.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -28,12 +29,13 @@ export class ProductComponent implements OnInit {
   //   quantity: any
   //   Total: any
   // }]
-  constructor(private rest: RestService, private cart: CartService) { }
+  constructor(private rest: RestService, private cart: CartService, private _router: Router) { }
 
   ngOnInit(): void {
     this.Allproduct();
     this.Allcategory();
     this.Allbrand();
+    this.getcarts()
   }
 
   Allproduct() {
@@ -71,22 +73,30 @@ export class ProductComponent implements OnInit {
       console.log(err);
     }
   }
-
-
   togglelike() {
     this.liked = !this.liked;
   }
 
   Addcarts(data: any) {
-    this.cart.addtoCart(data);
+    this.Addcart(data);
+    // this._router.navigate(['/Cartts']);
   }
 
+  getcarts() {
+    this.rest.carts().subscribe((data: any) => {
+      console.log(data);
+      this.carts = data.data;
+    }, (err: any) => {
+      console.log(err)
+    })
+  }
 
   Addcart(data: any) {
     this.rest.ADDCARTS(data).subscribe((data: any) => {
       console.log(data);
       this.carts.push();
-    })
+      this.cart.getTotalPrice();
+    });
   }
 
 

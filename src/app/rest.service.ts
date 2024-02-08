@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class RestService {
   public cartitems: any[] = [];
   public cartslist = new BehaviorSubject<any>([])
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _state: StateService) { }
 
   url = "http://localhost:4040";
 
@@ -88,6 +89,32 @@ export class RestService {
     return this.http.delete(this.url2 + '/Deletecart/' + cart_id);
   }
 
-  
+  url3 = 'http://localhost:5000';
+
+  Login(data: any) {
+    return this.http.post(this.url3 + '/login', data);
+  }
+
+  Registeration(data: any) {
+    return this.http.post(this.url3 + '/Registeration', data);
+  }
+
+  addtoCart() {
+    this._state.checktoken();
+    const headers = new HttpHeaders({ 'token': this._state.token });
+    return this.http.post(this.url3 + '/AddCart', { headers });
+  }
+
+  Users() {
+    // this._state.checktoken();
+    const headers = new HttpHeaders({ 'token': this._state.token });
+    return this.http.get(this.url3 + '/Information', { headers });
+  }
+
+  Wishlists() {
+    // this._state.checktoken();
+    const headers = new HttpHeaders({ 'token': this._state.token });
+    return this.http.get(this.url3 + "/Wishlist", { headers });
+  }
 
 }

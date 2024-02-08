@@ -18,20 +18,22 @@
             </thead>
             <tbody>
                 <tr *ngFor="let c of carts  | paginate : {itemsPerPage : 10 , currentPage : pro}; let i = index">
-                    <th scope="row">{{c.cart_id}}</th>
+                    <td>{{i+1}}</td>
+                    <!-- <th scope="row">{{c.cart_id}}</th> -->
                     <!-- <td>{{c.title}}</td> -->
                     <!-- <td> <img style="width: 120px;" src="{{c.image}}" alt=""> </td> -->
                     <td style="width: 25%;">{{c.productname}}</td>
                     <th style="width: 12%;">{{c.price}}</th>
                     <td style="width: 12%;" (click)="OnIncrement()">{{c.quantity}}</td>
-                    <td style="width: 12%;">{{c.total}}</td>
+                    <td style="width: 12%;">{{c.grandTotal}}</td>
                     <td><button (click)="removeItem(c.product_id)" class="btn btn-danger"><i
                                 class="bi bi-trash3"></i></button>
                     </td>
+                    <td> <button (click)="Deletecartss(c['Cart_id'])" class="btn btn-danger">Empty Cart</button> </td>
                 </tr>
                 <tr>
                     <td colspan="4"></td>
-                    <td> <button (click)="emptycart()" class="btn btn-danger">Empty Cart</button> </td>
+                    <td><button [routerLink]="['/userdetails']">Order</button></td>
                     <td> <button [routerLink]="['/product']" class="btn btn-primary">Shop More</button> </td>
                     <td><strong>Total : &#8377;{{grandTotal}}</strong></td>
                 </tr>

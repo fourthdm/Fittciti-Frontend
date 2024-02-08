@@ -62,7 +62,6 @@ export class CartsssComponent implements OnInit {
   //   }
   // }
 
-
   Addcarts(data: any) {
     this.rest.ADDCARTS(data).subscribe((data: any) => {
       console.log(data);
@@ -111,6 +110,7 @@ export class CartsssComponent implements OnInit {
     })
   }
 
+  
   emptycart() { }
 
 }
