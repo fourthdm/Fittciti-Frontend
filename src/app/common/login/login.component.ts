@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     if (token) {
       this._state.token = token;
       this._state.decodeToken();
-      this._router.navigate(['/cart']);
+      this._router.navigate(['/Cartts']);
     }
   }
 
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', data.data);
       this._state.token = (data.data);
       this._state.decodeToken();
-      this._router.navigate(['/cart']);
+      this._router.navigate(['/Cartts']);
     }, err => {
       console.log(err);
     })

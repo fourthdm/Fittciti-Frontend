@@ -98,6 +98,10 @@ export class RestService {
   Registeration(data: any) {
     return this.http.post(this.url3 + '/Registeration', data);
   }
+  
+  Product() {
+    return this.http.get(this.url3 + '/Product');
+  }
 
   addtoCart() {
     this._state.checktoken();
@@ -105,16 +109,34 @@ export class RestService {
     return this.http.post(this.url3 + '/AddCart', { headers });
   }
 
+  cart() {
+    this._state.checktoken();
+    const headers = new HttpHeaders({ 'token': this._state.token });
+    return this.http.get(this.url3 + "/Carts", { headers });
+  }
+
+  enquiry(data: any) {
+    return this.http.post(this.url3 + '/Contact', data);
+  }
+
   Users() {
-    // this._state.checktoken();
+    this._state.checktoken();
     const headers = new HttpHeaders({ 'token': this._state.token });
     return this.http.get(this.url3 + '/Information', { headers });
   }
 
   Wishlists() {
-    // this._state.checktoken();
+    this._state.checktoken();
     const headers = new HttpHeaders({ 'token': this._state.token });
     return this.http.get(this.url3 + "/Wishlist", { headers });
+  }
+
+  Category() {
+    return this.http.get(this.url3 + '/Allcategory');
+  }
+
+  Brand() {
+    return this.http.get(this.url3 + '/Allbrand');
   }
 
 }

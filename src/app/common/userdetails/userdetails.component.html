@@ -94,3 +94,13 @@
     </div>
 
 </div>
+
+<div class="card" *ngFor="let u of Users,let i=index">
+    <div class="card-body">
+        <h3> Name: {{u.Name}}</h3>
+        <h3> UserName: {{u.Username}}</h3>
+        <h3> Email: {{u.Email}}</h3>
+        <h3> Address: {{u.Address}}</h3>
+        <h3> Mobileno: {{u.Mobileno}}</h3>
+    </div>
+</div>

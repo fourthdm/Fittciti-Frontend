@@ -13,7 +13,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" (click)="scroll()" [routerLink]="['/about']">About Us</a>
+                    <a class="nav-link" (click)="scroll()" [routerLink]="['/about']">About </a>
                 </li>
 
                 <li class="nav-item">
@@ -25,18 +25,21 @@
                 </li>
 
                 <li class="nav-item">
-
-                    <a class="nav-link" (click)="scroll()" [routerLink]="['/contact']">Contact Us</a>
+                    <a class="nav-link" (click)="scroll()" [routerLink]="['/contact']">Contact </a>
                 </li>
             </ul>
+
             <div class="d-flex" role="">
                 <button type="button" class="btn btn-secondary btn-sm" [routerLink]="['/register']">Register</button>
                 <button type="button" class="btn btn-info btn-sm" [routerLink]="['/login']"><b>Login</b></button>
+                <button (click)="logout()">Logout</button>
                 <!-- <p>Pune <i class="fa-solid fa-user fa-xl" [routerLink]="['/login']"></i></p> -->
                 <p><a href="" [routerLink]="['/Cartts']"> <i class=" fa-solid fa-cart-plus
                         fa-xl"> <sup style="color: red;">{{totalitems}}</sup></i>
-                    </a></p>
+                    </a>
+                </p>
             </div>
+            
         </div>
     </div>
 </nav>

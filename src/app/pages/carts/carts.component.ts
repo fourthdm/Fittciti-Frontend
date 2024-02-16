@@ -10,7 +10,7 @@ declare var Razorpay: any;
   styleUrls: ['./carts.component.css']
 })
 export class CartsComponent implements OnInit {
-
+  pq: number = 1;
   Product_id: number = 1;
   pro: any;
   showproduct: any[] = [];
@@ -19,10 +19,10 @@ export class CartsComponent implements OnInit {
   constructor(private rest: RestService, private cart: CartService) { }
 
   ngOnInit(): void {
-    this.cart.getProducts().subscribe((resp:any) => {
-      this.showproduct = resp;
-      this.grandTotal = this.cart.getTotalPrice();
-    })
+    // this.cart.getProducts().subscribe((resp: any) => {
+    //   this.showproduct = resp;
+    //   this.grandTotal = this.cart.getTotalPrice();
+    // })
   }
 
   handlequantity(val: string) {
@@ -32,7 +32,7 @@ export class CartsComponent implements OnInit {
     }
     else if (this.Product_id > 1 && val === 'min') {
       this.Product_id
-       -= 1;
+        -= 1;
     }
   }
 
@@ -53,7 +53,8 @@ export class CartsComponent implements OnInit {
     const razorpayoption = {
       description: 'sample razorpay demo',
       currency: 'INR',
-      amount: this.grandTotal * 100,
+      amount: 200000,
+      // amount: this.grandTotal * 100,
       name: 'Fittciti',
       key: 'rzp_live_kFr6gQiD2PCk11',
       image: 'https://t4.ftcdn.net/jpg/06/09/50/93/360_F_609509369_6xlux7VFjFMb0pORhdrJG4zdyn4s6EHO.jpg',

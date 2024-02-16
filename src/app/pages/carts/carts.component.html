@@ -1,7 +1,7 @@
 <br><br><br><br><br>
 
 
-<div class="container">
+<!-- <div class="container">
     <div class="table-responsive">
         <table class="table ">
             <thead>
@@ -16,7 +16,7 @@
             <tbody>
                 <tr *ngFor="let o of showproduct | paginate : {itemsPerPage : 10 , currentPage : pro}, let i =index">
                     <td>{{o.Cart_id}}</td>
-                    <td><img [src]="o.image" alt=""></td>
+                    <td><img [src]="o.image" alt=""></td> <td>{{o.productname}}</td>
                     <td>{{o.quantity}}</td>
                     <td>{{o.price}}</td>
                   
@@ -33,10 +33,9 @@
             </tbody>
         </table>
     </div>
-</div>
+</div> -->
 
-
-<!-- <ng-container *ngIf="showproduct.length != 0 ">
+ <ng-container *ngIf="showproduct.length != 0 ">
 
     <div class="container table-responsive">
         <table class="table table-responsive">
@@ -76,11 +75,11 @@
                     <td> <button (click)="emptycart()" class="btn btn-danger">Empty Cart</button> </td>
                     <td> <button [routerLink]="['/product']" class="btn btn-primary">Shop More</button> </td>
                     <td> <strong> Total : &#8377;{{grandTotal}} <button (click)="paynow()" class="btn btn-primary">
-                                Pay</button></strong></td>
+                                Pay Now</button></strong></td>
                 </tr>
                 <pagination-controls (pageChange)="pro = $event"></pagination-controls>
             </tbody>
         </table>
     </div>
 
-</ng-container> -->
+</ng-container>

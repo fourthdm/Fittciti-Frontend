@@ -22,8 +22,8 @@
                     <!-- <th scope="row">{{c.cart_id}}</th> -->
                     <!-- <td>{{c.title}}</td> -->
                     <!-- <td> <img style="width: 120px;" src="{{c.image}}" alt=""> </td> -->
-                    <td style="width: 25%;">{{c.productname}}</td>
-                    <th style="width: 12%;">{{c.price}}</th>
+                    <td style="width: 25%;">{{c.Product_Name}}</td>
+                    <th style="width: 12%;">{{c.Price}}</th>
                     <td style="width: 12%;" (click)="OnIncrement()">{{c.quantity}}</td>
                     <td style="width: 12%;">{{c.grandTotal}}</td>
                     <td><button (click)="removeItem(c.product_id)" class="btn btn-danger"><i
@@ -35,7 +35,8 @@
                     <td colspan="4"></td>
                     <td><button [routerLink]="['/userdetails']">Order</button></td>
                     <td> <button [routerLink]="['/product']" class="btn btn-primary">Shop More</button> </td>
-                    <td><strong>Total : &#8377;{{grandTotal}}</strong></td>
+                    <td><button ></button></td>
+                    <td><strong (click)="paynow()">Total : &#8377;{{grandTotal}}</strong></td>
                 </tr>
 
                 <pagination-controls (pageChange)="pro = $event"></pagination-controls>

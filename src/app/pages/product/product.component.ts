@@ -39,7 +39,7 @@ export class ProductComponent implements OnInit {
   }
 
   Allproduct() {
-    this.rest.Productsss().subscribe((data: any) => {
+    this.rest.Product().subscribe((data: any) => {
       console.log(data);
       this.prod = data.data
     }, (err: any) => {
@@ -48,7 +48,7 @@ export class ProductComponent implements OnInit {
   }
 
   Allcategory() {
-    this.rest.Categoriesss().subscribe((data: any) => {
+    this.rest.Category().subscribe((data: any) => {
       console.log(data);
       this.c = data.data;
     }, (err: any) => {
@@ -57,7 +57,7 @@ export class ProductComponent implements OnInit {
   }
 
   Allbrand() {
-    this.rest.Brandss().subscribe((data: any) => {
+    this.rest.Brand().subscribe((data: any) => {
       console.log(data);
       this.b = data.data;
     }, (err: any) => {

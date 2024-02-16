@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RestService } from 'src/app/rest.service';
 import { StateService } from 'src/app/state.service';
 
@@ -13,22 +14,37 @@ export class UserdetailsComponent implements OnInit {
   Users: any[] = [];
   Wish: any[] = [];
 
-  constructor(private rest: RestService, private state: StateService) { }
+  constructor(private rest: RestService, private _state: StateService, private _router: Router) { }
 
   ngOnInit(): void {
-    this.state.checktoken();
-    this.User();
+    this.checktoken()
+    // this.User();
   }
 
-  User() {
-    this.rest.Users().subscribe((result: any) => {
-      console.log(result);
-      this.state.report = (result as any).data;
-      this.Users = result.data;
-    }, (err: any) => {
-      console.log(err);
-    })
+  checktoken() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this._state.token = token;
+      this._state.decodeToken();
+      this.rest.Users().subscribe((result: any) => {
+        console.log(result);
+        this._state.report = (result as any).data;
+        this.Users = result.data;
+      }, (err: any) => {
+        console.log(err);
+      })
+    }
   }
+
+  // User() {
+  //   this.rest.Users().subscribe((result: any) => {
+  //     console.log(result);
+  //     this._state.report = (result as any).data;
+  //     this.Users = result.data;
+  //   }, (err: any) => {
+  //     console.log(err);
+  //   })
+  // }
 
   Wishlist() {
     this.rest.Wishlists().subscribe((result: any) => {
@@ -38,5 +54,5 @@ export class UserdetailsComponent implements OnInit {
       console.log(err);
     })
   }
-  
+
 }
