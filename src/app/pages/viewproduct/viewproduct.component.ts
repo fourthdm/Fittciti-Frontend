@@ -14,6 +14,7 @@ export class ViewproductComponent implements OnInit {
   prod: any;
 
   Prod_id = 0;
+  images: any[] = [];
 
   constructor(private rest: RestService, private _route: ActivatedRoute) { }
 
@@ -38,12 +39,19 @@ export class ViewproductComponent implements OnInit {
     //   this.products = data['data'][0];
     // })
 
-    this.rest.Productsss().subscribe((data: any) => {
+    this.rest.Product().subscribe((data: any) => {
       console.log(data);
       this.products = data.data;
     }, (err) => {
       console.log(err);
     })
+
+    this.rest.Getimages().subscribe((data: any) => {
+      console.log(data);
+      this.images = (data as any)['data'];
+    }, (err: any) => {
+      console.log(err)
+    });
   }
 
   // view() {

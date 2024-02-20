@@ -98,7 +98,7 @@ export class RestService {
   Registeration(data: any) {
     return this.http.post(this.url3 + '/Registeration', data);
   }
-  
+
   Product() {
     return this.http.get(this.url3 + '/Product');
   }
@@ -137,6 +137,10 @@ export class RestService {
 
   Brand() {
     return this.http.get(this.url3 + '/Allbrand');
+  }
+
+  Getimages() {
+    return this.http.get(this.url + '/Showimages');
   }
 
 }

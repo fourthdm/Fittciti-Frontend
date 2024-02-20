@@ -18,7 +18,8 @@ export class ContactComponent implements OnInit {
       Name: new FormControl('', [Validators.required]),
       Email: new FormControl('', [Validators.required]),
       Mobileno: new FormControl('', [Validators.required]),
-      Message: new FormControl('', [Validators.required])
+      Message: new FormControl('', [Validators.required]),
+      Date: new FormControl('', [Validators.required])
     })
   }
 
