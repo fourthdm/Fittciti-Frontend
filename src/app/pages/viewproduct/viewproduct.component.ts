@@ -62,4 +62,8 @@ export class ViewproductComponent implements OnInit {
   //     console.log(err);
   //   })
   // }
+
+
+  
 }
+
