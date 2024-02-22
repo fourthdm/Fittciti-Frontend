@@ -59,14 +59,14 @@ export class NavbarComponent implements OnInit {
     // this._toastr.success('logged out successfully', 'thanks for visit!');
   }
 
-  A(){
-    this.rest.addtoCart().subscribe((data:any)=>{
-      console.log(data);
-      this.showproduct= data.data;
-      // this.showproduct = data.
-    },(err:any)=>{
-      console.log(err)
-    })
-  }
+  // A(){
+  //   this.rest.addtoCart().subscribe((data:any)=>{
+  //     console.log(data);
+  //     this.showproduct= data.data;
+  //     this.showproduct = data
+  //   },(err:any)=>{
+  //     console.log(err)
+  //   })
+  // }
 
 }

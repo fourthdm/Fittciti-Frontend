@@ -73,7 +73,7 @@ export class CartsssComponent implements OnInit {
   // }
 
   Addcarts(data: any) {
-    this.rest.ADDCARTS(data).subscribe((data: any) => {
+    this.rest.addtoCart(data).subscribe((data: any) => {
       console.log(data);
       this.carts.push();
       this.getTotalPrice()
@@ -85,11 +85,10 @@ export class CartsssComponent implements OnInit {
   getTotalPrice(): number {
     let grandTotal = 0;
     this.Addcarts((carts: any) => {
-      grandTotal += carts.price;
+      grandTotal = carts.Total + carts.Total;
     })
     return grandTotal;
   }
-
 
   getcarts() {
     this.rest.cart().subscribe((data: any) => {
@@ -100,9 +99,9 @@ export class CartsssComponent implements OnInit {
     })
   }
 
-  Deletecartss(cart_id: any) {
+  Deletecartss(Cart_id: any) {
     if (confirm('Are you want to delete the cart')) {
-      this.rest.DeletecartbyId(cart_id).subscribe((data: any) => {
+      this.rest.DeleteCart(Cart_id).subscribe((data: any) => {
         console.log(data);
         this.getcarts();
       }, (err: any) => {
@@ -111,8 +110,8 @@ export class CartsssComponent implements OnInit {
     }
   }
 
-  removeItem(product_id: any) {
-    this.rest.DeletecartbyProduct(product_id).subscribe((data: any) => {
+  removeItem(Product_id: any) {
+    this.rest.DeletebyProduct(Product_id).subscribe((data: any) => {
       console.log(data);
       this.getcarts();
     }, (err: any) => {

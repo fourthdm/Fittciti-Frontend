@@ -24,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let c of Users  | paginate : {itemsPerPage : 10 , currentPage : pro}; let i = index">
+                    <tr *ngFor="let c of u  | paginate : {itemsPerPage : 10 , currentPage : pro}; let i = index">
                         <td>{{i+1}}</td>
                         <!-- <th scope="row">{{c.cart_id}}</th> -->
                         <!-- <td>{{c.title}}</td> -->
@@ -95,7 +95,7 @@
 
 </div>
 
-<div class="card" *ngFor="let u of Users,let i=index">
+<div class="card" *ngFor="let u of  this.Users,let i=index">
     <div class="card-body">
         <h3> Name: {{u.Name}}</h3>
         <h3> UserName: {{u.Username}}</h3>

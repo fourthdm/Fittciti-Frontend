@@ -57,19 +57,19 @@ export class RestService {
 
   url2 = "http://localhost:4000";
 
-  Categoriesss() {
-    return this.http.get(this.url2 + '/Allcategory');
-  }
+  // Categoriesss() {
+  //   return this.http.get(this.url2 + '/Allcategory');
+  // }
 
-  Brandss() {
-    return this.http.get(this.url2 + '/Allbrand');
-  }
+  // Brandss() {
+  //   return this.http.get(this.url2 + '/Allbrand');
+  // }
 
   Productsss() {
     return this.http.get(this.url2 + '/products');
   }
 
-  Getproductbycategoryandbrand(data: any) {
+  Getproductcategoryandbrand(data: any) {
     return this.http.post(this.url2 + '/productBycategoryBrand', data);
   }
 
@@ -103,16 +103,28 @@ export class RestService {
     return this.http.get(this.url3 + '/Product');
   }
 
-  addtoCart() {
+  addtoCart(data: any) {
     this._state.checktoken();
-    const headers = new HttpHeaders({ 'token': this._state.token });
-    return this.http.post(this.url3 + '/AddCart', { headers });
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this.http.post(this.url3 + '/AddCart', { headers }, data);
   }
 
   cart() {
     this._state.checktoken();
-    const headers = new HttpHeaders({ 'token': this._state.token });
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
     return this.http.get(this.url3 + "/Carts", { headers });
+  }
+
+  DeleteCart(data: any) {
+    this._state.checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this.http.delete(this.url3 + "/Emptycart/" + data.Cart_id, { headers })
+  }
+
+  DeletebyProduct(data: any) {
+    this._state.checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this.http.delete(this.url3 + "/DeletebyProduct/" + data.Product_id, { headers });
   }
 
   enquiry(data: any) {
@@ -120,14 +132,14 @@ export class RestService {
   }
 
   Users() {
-    this._state.checktoken();
-    const headers = new HttpHeaders({ 'token': this._state.token });
+    // this._state.checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
     return this.http.get(this.url3 + '/Information', { headers });
   }
 
   Wishlists() {
     this._state.checktoken();
-    const headers = new HttpHeaders({ 'token': this._state.token });
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
     return this.http.get(this.url3 + "/Wishlist", { headers });
   }
 
@@ -141,6 +153,10 @@ export class RestService {
 
   Getimages() {
     return this.http.get(this.url + '/Showimages');
+  }
+
+  Getproductbycategoryandbrand(data: any) {
+    return this.http.post(this.url3 + '/Productbycategoryandbrand', data);
   }
 
 }

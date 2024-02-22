@@ -23,10 +23,11 @@
                     <!-- <td>{{c.title}}</td> -->
                     <!-- <td> <img style="width: 120px;" src="{{c.image}}" alt=""> </td> -->
                     <td style="width: 25%;">{{c.Product_Name}}</td>
+                    <!-- <td style="width: 25%;">{{c.Product_id}}</td> -->
                     <th style="width: 12%;">{{c.Price}}</th>
-                    <td style="width: 12%;" (click)="OnIncrement()">{{c.quantity}}</td>
-                    <td style="width: 12%;">{{c.grandTotal}}</td>
-                    <td><button (click)="removeItem(c.product_id)" class="btn btn-danger"><i
+                    <td style="width: 12%;" (click)="OnIncrement()">{{c.Quantity}}</td>
+                    <td style="width: 12%;">{{c.Total}}</td>
+                    <td><button (click)="removeItem(c.Product_id)" class="btn btn-danger"><i
                                 class="bi bi-trash3"></i></button>
                     </td>
                     <td> <button (click)="Deletecartss(c['Cart_id'])" class="btn btn-danger">Empty Cart</button> </td>

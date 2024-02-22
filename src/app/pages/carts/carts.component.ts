@@ -19,10 +19,10 @@ export class CartsComponent implements OnInit {
   constructor(private rest: RestService, private cart: CartService) { }
 
   ngOnInit(): void {
-    // this.cart.getProducts().subscribe((resp: any) => {
-    //   this.showproduct = resp;
-    //   this.grandTotal = this.cart.getTotalPrice();
-    // })
+    this.cart.getProducts().subscribe((resp: any) => {
+      this.showproduct = resp;
+      this.grandTotal = this.cart.getTotalPrice();
+    })
   }
 
   handlequantity(val: string) {

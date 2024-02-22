@@ -8,10 +8,9 @@ import { Router } from '@angular/router';
 export class StateService {
 
   token = '';
-  
   report: any = undefined;
-
   user: any = undefined;
+  users: any[] = [];
 
   constructor(private _router: Router) { }
 

@@ -9,14 +9,15 @@ import { StateService } from 'src/app/state.service';
   styleUrls: ['./userdetails.component.css']
 })
 export class UserdetailsComponent implements OnInit {
-
+  u: any;
   pro: any
   Users: any[] = [];
   Wish: any[] = [];
 
-  constructor(private rest: RestService, private _state: StateService, private _router: Router) { }
+  constructor(private _rest: RestService, private _state: StateService, private _router: Router) { }
 
   ngOnInit(): void {
+    this.getusers();
     this.checktoken()
     // this.User();
   }
@@ -26,15 +27,26 @@ export class UserdetailsComponent implements OnInit {
     if (token) {
       this._state.token = token;
       this._state.decodeToken();
-      this.rest.Users().subscribe((result: any) => {
+      this._rest.Users().subscribe((result: any) => {
         console.log(result);
-        this._state.report = (result as any).data;
-        this.Users = result.data;
+        this._state.users = (result as any)['data'];
+        this.Users = this._state.users;
       }, (err: any) => {
         console.log(err);
       })
     }
   }
+
+  getusers() {
+    this._rest.Users().subscribe((data: any) => {
+      console.log(data);
+      this._state.users = (data as any)['data'];
+      this.Users = this._state.users;
+    }, err => {
+      console.log(err);
+    })
+  }
+
 
   // User() {
   //   this.rest.Users().subscribe((result: any) => {
@@ -47,7 +59,7 @@ export class UserdetailsComponent implements OnInit {
   // }
 
   Wishlist() {
-    this.rest.Wishlists().subscribe((result: any) => {
+    this._rest.Wishlists().subscribe((result: any) => {
       console.log(result);
       this.Wish = result.data;
     }, (err: any) => {
