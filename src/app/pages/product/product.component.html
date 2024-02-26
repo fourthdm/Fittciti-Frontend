@@ -5,17 +5,17 @@
         <div class="row">
             <div class="col-md-3">
                 <label for="batch_date">Category Name : <br>
-                    <select name="category_id" id="category_id" [(ngModel)]="category_id" class="form-select"
+                    <select name="category_id" id="category_id" [(ngModel)]="Category_id" class="form-select"
                         aria-label="Multiple select example">
-                        <option *ngFor="let c of c " [value]="c.category_id">{{c.Category_Name}}</option>
+                        <option *ngFor="let c of c " [value]="c.Category_id">{{c.Category_Name}}</option>
                     </select>
                 </label>
 
                 <label for="batch_date">Brand Name : <br>
-                    <select name="brand_id" id="brand_id" [(ngModel)]="brand_id" class="form-select"
+                    <select name="brand_id" id="brand_id" [(ngModel)]="Brand_id" class="form-select"
                         aria-label="Multiple select example">
                         <option selected> All Brands</option>
-                        <option *ngFor="let b of b " [value]="b.brand_id">{{b.Brand_Name}}</option>
+                        <option *ngFor="let b of b " [value]="b.Brand_id">{{b.Brand_Name}}</option>
                     </select>
                 </label>
 
@@ -29,7 +29,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4 col-md-6"
-                            *ngFor="let p of prod | paginate: { itemsPerPage: 12, currentPage: pro }, let i=index ">
+                            *ngFor="let p of prod | paginate: { itemsPerPage: 6, currentPage: pro }, let i=index ">
                             <div class="container">
                                 <div class="card">
                                     <div class="">
@@ -41,7 +41,10 @@
                                             [routerLink]="['/viewproduct']">
                                         <div class="card-body">
                                             <p>{{p.Product_Name}} <br> <span>{{p.Weight}}</span></p>
-                                            <p>Rs {{p.Price}} </p>
+                                            <p>Rs <s style="color: red;">{{p.Price}} </s> <span
+                                                    style="margin-left: 5%;">
+                                                    <b>{{p.discount}}%</b></span> </p>
+                                            <p>Rs {{p.pricewithdiscount}}</p>
                                             <button class="btn btn-secondary" (click)="Addcart(p)">
                                                 <i class="fa-solid fa-cart-plus fa-lg"></i>
                                                 Add To Cart</button>

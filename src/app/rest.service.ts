@@ -159,4 +159,8 @@ export class RestService {
     return this.http.post(this.url3 + '/Productbycategoryandbrand', data);
   }
 
+  GetproductbyBrandid(Brand_id: any) {
+    return this.http.get(this.url + '/Productbybrand/' + Brand_id);
+  }
+
 }

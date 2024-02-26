@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/rest.service';
+import { StateService } from 'src/app/state.service';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  constructor(private rest: RestService) { }
+  constructor(private rest: RestService,private state:StateService) { }
 
   ngOnInit(): void {
     this.getproducts()
@@ -45,5 +46,7 @@ export class HomeComponent implements OnInit {
       console.log(err);
     })
   }
+
+  
 
 }

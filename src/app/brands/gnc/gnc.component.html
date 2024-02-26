@@ -18,7 +18,7 @@
 
                     <select class="form-select form-select-lg" aria-label="Large select example">
                         <option selected><b>All Category's</b></option>
-                        <option *ngFor="let c of category, let i=index" [value]="c.category_id">{{c.Categories_Name }}
+                        <option *ngFor="let c of category, let i=index" [value]="c.Category_id">{{c.Category_Name}}
                         </option>
 
                     </select>
@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <!-- <button (click)="filter()" class="btn btn-primary mt-4">Filter</button> -->
+            <button (click)="filter()" class="btn btn-primary mt-4">Filter</button>
         </div><br>
 
         <div class="col-lg-4 col-md-6"

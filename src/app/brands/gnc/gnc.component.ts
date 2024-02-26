@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RestService } from 'src/app/rest.service';
 
 @Component({
@@ -12,6 +12,14 @@ export class GncComponent implements OnInit {
   category: any[] = [];
   brands: any[] = [];
   products: any[] = [];
+ 
+  prod: any[] = [];
+  c: any[] = [];
+  b: any[] = [];
+  @Input() Category_id: any;
+  @Input() Brand_id: any;
+  @Input() liked: boolean = false;
+
 
   constructor(private rest: RestService) { }
 
@@ -22,7 +30,7 @@ export class GncComponent implements OnInit {
   }
 
   getid(Brand_id: any) {
-    this.rest.getbybrandid(Brand_id).subscribe((result: any) => {
+    this.rest.GetproductbyBrandid(Brand_id).subscribe((result: any) => {
       console.log(result);
       this.products = result.data;
     }, (err: any) => {
@@ -30,7 +38,7 @@ export class GncComponent implements OnInit {
     })
   }
   Allcategory() {
-    this.rest.category().subscribe((data: any) => {
+    this.rest.Category().subscribe((data: any) => {
       console.log(data);
       this.category = data.data;
     }, (err) => {
@@ -39,14 +47,28 @@ export class GncComponent implements OnInit {
   }
 
   Allbrands() {
-    this.rest.brand().subscribe((data: any) => {
+    this.rest.Brand().subscribe((data: any) => {
       console.log(data);
       this.brands = data.data;
     }, (err) => {
       console.log(err);
     })
   }
+
   
+  
+  filter() {
+    this.rest.Getproductbycategoryandbrand({ Category_id: this.Category_id, Brand_id: this.Brand_id }).subscribe((data: any) => {
+      console.log(data);
+      this.products = data.data;
+    }), (err: any) => {
+      console.log(err);
+    }
+  }
+  togglelike() {
+    this.liked = !this.liked;
+  }
+
   // AllProducts() {
   //   this.rest.getproduct().subscribe((data: any) => {
   //     console.log(data);

@@ -92,9 +92,11 @@
 
             <div class="col-md-6">
                 <br>
-                <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br><br>
+                <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br>
                 <h6>{{p.Weight}}</h6>
-                <h4>&#8377; {{p.Price}}</h4>
+                <h4 style="color: red;">&#8377; {{p.Price}}</h4>
+                <p>{{p.discount}}% Discount</p>
+                <p>&#8377; {{p.pricewithdiscount}}</p>
                 <br>
                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                     <button class="btn btn-light" (click)="handlequantity('min')">

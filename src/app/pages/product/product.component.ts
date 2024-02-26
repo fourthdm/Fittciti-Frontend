@@ -19,8 +19,8 @@ export class ProductComponent implements OnInit {
   prod: any[] = [];
   c: any[] = [];
   b: any[] = [];
-  @Input() category_id: any;
-  @Input() brand_id: any;
+  @Input() Category_id: any;
+  @Input() Brand_id: any;
   @Input() liked: boolean = false;
 
   // carttsss:[{
@@ -42,7 +42,12 @@ export class ProductComponent implements OnInit {
   Allproduct() {
     this.rest.Product().subscribe((data: any) => {
       console.log(data);
-      this.prod = data.data
+      if (data.length == 0) {
+        console.log(data)
+        alert('Data not found');
+      }
+      this.prod = data.data;
+
     }, (err: any) => {
       console.log(err);
     })
@@ -67,7 +72,7 @@ export class ProductComponent implements OnInit {
   }
 
   getallproduct() {
-    this.rest.Getproductbycategoryandbrand({ Category_id: this.category_id, Brand_id: this.brand_id }).subscribe((data: any) => {
+    this.rest.Getproductbycategoryandbrand({ Category_id: this.Category_id, Brand_id: this.Brand_id }).subscribe((data: any) => {
       console.log(data);
       this.prod = data.data;
     }), (err: any) => {
@@ -86,21 +91,22 @@ export class ProductComponent implements OnInit {
       this._router.navigate(['/Cartts']);
     }
     else {
-      this._router.navigate(['/login']);
+      // this._router.navigate(['/login']);
     }
   }
 
 
-  Addcart(data: any) {    
-    this.rest.addtoCart(data).subscribe((data: any) => {
-      console.log(data);
-      this.carts.push();
-      this.cart.getTotalPrice();
-      this._router.navigate(['/Cartts']);
-    });
-  }
+  // Addcart(data: any) {    
+  //   this.rest.addtoCart(data).subscribe((data: any) => {
+  //     console.log(data);
+  //     this.carts.push();
+  //     this.cart.getTotalPrice();
+  //     // this._router.navigate(['/Cartts']);
+  //   });
+  // }
 
-  // this.rest.ADDCARTS().subscribe((data: any) => {
+  // Addcart(data:any){
+  //   this.rest.ADDCARTS(data).subscribe((data: any) => {
   //   console.log(data);
   //   localStorage.setItem('token', data.data);
   //   this.state.token = (data.data);
@@ -109,6 +115,7 @@ export class ProductComponent implements OnInit {
   // }, err => {
   //   console.log(err);
   // })
+  // }
 
   getcarts() {
     this.rest.cart().subscribe((data: any) => {
@@ -119,13 +126,13 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  // Addcart(data: any) {
-  //   this.rest.ADDCARTS(data).subscribe((data: any) => {
-  //     console.log(data);
-  //     this.carts.push();
-  //     this.cart.getTotalPrice();
-  //   });
-  // }
+  Addcart(data: any) {
+    this.rest.ADDCARTS(data).subscribe((data: any) => {
+      console.log(data);
+      this.carts.push();
+      this.cart.getTotalPrice();
+    });
+  }
 
 
 }

@@ -90,6 +90,9 @@ export class CartsssComponent implements OnInit {
     return grandTotal;
   }
 
+  g(){}
+
+
   getcarts() {
     this.rest.cart().subscribe((data: any) => {
       console.log(data);

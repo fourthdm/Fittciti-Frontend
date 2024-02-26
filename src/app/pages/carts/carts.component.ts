@@ -66,7 +66,7 @@ export class CartsComponent implements OnInit {
       theme: {
         color: '#'
       },
-      
+
       modal: {
         ondismiss: () => {
           console.log('dismissed')
