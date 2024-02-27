@@ -4,6 +4,7 @@ import { RestService } from 'src/app/rest.service';
 import { CartsComponent } from '../carts/carts.component';
 import { Router } from '@angular/router';
 import { StateService } from 'src/app/state.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-product',
@@ -22,7 +23,10 @@ export class ProductComponent implements OnInit {
   @Input() Category_id: any;
   @Input() Brand_id: any;
   @Input() liked: boolean = false;
+  Product_id :any;
 
+  images: [] = [];
+  wishlist: [] = [];
   // carttsss:[{
   //   productname: any,
   //   product_id: any
@@ -30,14 +34,25 @@ export class ProductComponent implements OnInit {
   //   quantity: any
   //   Total: any
   // }]
-  constructor(private rest: RestService, private cart: CartService, private _router: Router, private state: StateService) { }
+  constructor(private rest: RestService, private cart: CartService, private _router: Router, private state: StateService, http: HttpClient) { }
 
   ngOnInit(): void {
     this.Allproduct();
     this.Allcategory();
     this.Allbrand();
-    this.getcarts()
+    this.getcarts();
+    this.image();
   }
+
+  image() {
+    this.rest.images().subscribe((data: any) => {
+      console.log(data);
+      this.images = data.data;
+    }, (err: any) => {
+      console.log(err)
+    })
+  }
+
 
   Allproduct() {
     this.rest.Product().subscribe((data: any) => {
@@ -79,7 +94,12 @@ export class ProductComponent implements OnInit {
       console.log(err);
     }
   }
+  
   togglelike() {
+    this.rest.Addwishlist().subscribe((data: any) => {
+      console.log(data);
+      this.wishlist = data.data;
+    })
     this.liked = !this.liked;
   }
 
@@ -93,6 +113,19 @@ export class ProductComponent implements OnInit {
     else {
       // this._router.navigate(['/login']);
     }
+  }
+
+  addToWishlist(Product_id:number): void {
+    this.rest.Addwishlists(Product_id).subscribe(
+      (response: any) => {
+        // Handle success, maybe update the UI to show the heart as red
+        console.log('Product added to wishlist:', response);
+        this.wishlist = response.data
+      },
+      (error: any) => {
+        console.error('Error adding product to wishlist:', error);
+      }
+    );
   }
 
 

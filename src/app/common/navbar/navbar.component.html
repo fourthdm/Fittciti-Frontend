@@ -30,16 +30,35 @@
             </ul>
 
             <div class="d-flex" role="">
+
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Actions
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><button class="dropdown-item  btn btn-info btn-sm" type="button"
+                                [routerLink]="['/register']">Register</button></li>
+                        <li><button class="dropdown-item  btn btn-info btn-sm" type="button"
+                                [routerLink]="['/login']">Log in</button></li>
+                        <li><button class="dropdown-item  btn btn-info btn-sm" type="button" (click)="logout()">Log
+                                Out</button></li>
+                    </ul>
+                </div>
+
+                <!-- 
                 <button type="button" class="btn btn-secondary btn-sm" [routerLink]="['/register']">Register</button>
-                <button type="button" class="btn btn-info btn-sm" [routerLink]="['/login']"><b>Login</b></button>
-                <button (click)="logout()">Logout</button>
+                <button type="button" class=" btn btn-info btn-sm" [routerLink]="['/login']"><b>Login</b></button>
+                <button (click)="logout()">Logout</button> -->
                 <!-- <p>Pune <i class="fa-solid fa-user fa-xl" [routerLink]="['/login']"></i></p> -->
-                <p><a href="" [routerLink]="['/Cartts']"> <i class=" fa-solid fa-cart-plus
-                        fa-xl"> <sup style="color: red;">{{totalitems}}</sup></i>
+                <!-- <sup style="color: red;">{{totalitems}}</sup> -->
+                <p style="padding-left: 12px;"><a href="" [routerLink]="['/Cartts']"> <i class=" fa-solid fa-cart-plus
+                        fa-xl"></i>
                     </a>
                 </p>
             </div>
-            
+
         </div>
     </div>
 </nav>

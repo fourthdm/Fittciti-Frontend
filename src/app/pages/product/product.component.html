@@ -29,15 +29,16 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4 col-md-6"
-                            *ngFor="let p of prod | paginate: { itemsPerPage: 6, currentPage: pro }, let i=index ">
+                            *ngFor="let p of prod| paginate: { itemsPerPage: 6, currentPage: pro }, let i=index ">
                             <div class="container">
                                 <div class="card">
                                     <div class="">
                                         <div class="text-end">
                                             <i class="fa-solid fa-heart fa-xl" [ngStyle]="{'color':liked ? 'red':''}"
-                                                (click)="togglelike()"></i>
+                                                (click)="addToWishlist(Product_id)"></i>
                                         </div>
-                                        <img src="https://fourthdm-web-data.s3.amazonaws.com/{{ p.mainimage}}"
+                                        <img src="/assets/product/new/1.jpg" alt=""  [routerLink]="['/viewproduct']">
+                                        <img  [src]="p.image"
                                             [routerLink]="['/viewproduct']">
                                         <div class="card-body">
                                             <p>{{p.Product_Name}} <br> <span>{{p.Weight}}</span></p>

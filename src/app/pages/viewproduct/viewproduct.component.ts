@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestService } from 'src/app/rest.service';
 
@@ -16,6 +16,8 @@ export class ViewproductComponent implements OnInit {
   Prod_id = 0;
   images: any[] = [];
 
+  @Input() product_id = 0;
+
   constructor(private rest: RestService, private _route: ActivatedRoute) { }
 
   handlequantity(val: string) {
@@ -29,7 +31,10 @@ export class ViewproductComponent implements OnInit {
 
   ngOnInit(): void {
     this.AllProducts();
-    // this.view();
+    // this.fetchimage();
+    this.views();
+
+    
   }
 
   AllProducts() {
@@ -45,14 +50,27 @@ export class ViewproductComponent implements OnInit {
     }, (err) => {
       console.log(err);
     })
+  }
 
-    this.rest.Getimages().subscribe((data: any) => {
+  views() {
+    this.rest.imagearray(1).subscribe(data => {
       console.log(data);
       this.images = (data as any)['data'];
-    }, (err: any) => {
-      console.log(err)
-    });
+    }, err => {
+      console.log(err);
+    })
   }
+
+
+
+// fetchimage(product_id: number) {
+//   this.rest.imagearray(product_id).subscribe((data: any) => {
+//     console.log(data);
+//     this.images = (data as any)['data'];
+//   }, (err: any) => {
+//     console.log(err)
+//   });
+// }
 
   // view() {
   //   this.rest.getproductbyid(this.Prod_id).subscribe(data => {
@@ -64,6 +82,6 @@ export class ViewproductComponent implements OnInit {
   // }
 
 
-  
+
 }
 

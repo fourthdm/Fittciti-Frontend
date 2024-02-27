@@ -137,6 +137,16 @@ export class RestService {
     return this.http.get(this.url3 + '/Information', { headers });
   }
 
+  Addwishlist() {
+    this._state.checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this.http.post(this.url3 + "/AddWishlist", { headers });
+  }
+
+  Addwishlists(Product_id: number) {
+    return this.http.post('http://localhost:5000/AddWishlist', { Product_id: Product_id });
+  }
+
   Wishlists() {
     this._state.checktoken();
     const headers = new HttpHeaders({ 'x-access-token': this._state.token });
@@ -152,7 +162,7 @@ export class RestService {
   }
 
   Getimages() {
-    return this.http.get(this.url + '/Showimages');
+    return this.http.get(this.url3 + '/Showimages');
   }
 
   Getproductbycategoryandbrand(data: any) {
@@ -160,7 +170,15 @@ export class RestService {
   }
 
   GetproductbyBrandid(Brand_id: any) {
-    return this.http.get(this.url + '/Productbybrand/' + Brand_id);
+    return this.http.get(this.url3 + '/Productbybrand/' + Brand_id);
+  }
+
+  images() {
+    return this.http.get(this.url3 + '/singleimage');
+  }
+
+  imagearray(product_id: number) {
+    return this.http.get(this.url3 + '/Productwithimages/' + product_id);
   }
 
 }
