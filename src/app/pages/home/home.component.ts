@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RestService } from 'src/app/rest.service';
 import { StateService } from 'src/app/state.service';
 
@@ -11,6 +11,9 @@ export class HomeComponent implements OnInit {
   pq: number = 1
 
   products: any[] = [];
+  wishlist: any[] = [];
+  @Input() liked: boolean = false;
+  @Input() Product_id: any;
 
   scrolltop = document.getElementById('scrolltop');
   rootelement = document.documentElement;
@@ -32,7 +35,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  constructor(private rest: RestService,private state:StateService) { }
+  constructor(private rest: RestService, private state: StateService) { }
 
   ngOnInit(): void {
     this.getproducts()
@@ -47,6 +50,16 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  
+  // togglelike(Product_id: number) {
+  //   this.products[Product_id].liked == !this.products[Product_id].liked;
+  //   this.rest.Addwishlists(Product_id).subscribe((data: any) => {
+  //     console.log(data);
+  //     this.wishlist = data.data;
+  //   })
+  // }
+
+  toggleliked(i: number) {
+    this.rest.togglelike(this.products[i]);
+  }
 
 }

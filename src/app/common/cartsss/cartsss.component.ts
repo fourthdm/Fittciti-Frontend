@@ -21,7 +21,6 @@ export class CartsssComponent implements OnInit {
 
   public grandTotal !: number;
 
-
   constructor(private rest: RestService, private cart: CartService, private route: Router) { }
 
   ngOnInit(): void {
@@ -85,7 +84,7 @@ export class CartsssComponent implements OnInit {
   getTotalPrice(): number {
     let grandTotal = 0;
     this.Addcarts((carts: any) => {
-      grandTotal = carts.Total + carts.Total;
+      grandTotal += carts.Total;
     })
     return grandTotal;
   }
@@ -94,7 +93,7 @@ export class CartsssComponent implements OnInit {
 
 
   getcarts() {
-    this.rest.cart().subscribe((data: any) => {
+    this.rest.carts().subscribe((data: any) => {
       console.log(data);
       this.carts = data.data;
     }, (err: any) => {
@@ -127,7 +126,7 @@ export class CartsssComponent implements OnInit {
       description: 'sample razorpay demo',
       currency: 'INR',
       // amount: 200000,
-      amount: this.grandTotal * 100,
+      amount: this.getTotalPrice(),
       name: 'Fittciti',
       key: 'rzp_live_kFr6gQiD2PCk11',
       image: 'https://t4.ftcdn.net/jpg/06/09/50/93/360_F_609509369_6xlux7VFjFMb0pORhdrJG4zdyn4s6EHO.jpg',

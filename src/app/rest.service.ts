@@ -8,6 +8,9 @@ import { StateService } from './state.service';
 })
 export class RestService {
 
+  products:any[]=[];
+  Wishlist:any[]=[];
+
   public cartitems: any[] = [];
   public cartslist = new BehaviorSubject<any>([])
 
@@ -89,6 +92,11 @@ export class RestService {
     return this.http.delete(this.url2 + '/Deletecart/' + cart_id);
   }
 
+
+
+
+  
+
   url3 = 'http://localhost:5000';
 
   Login(data: any) {
@@ -101,6 +109,10 @@ export class RestService {
 
   Product() {
     return this.http.get(this.url3 + '/Product');
+  }
+
+  Productsviews(id:number){
+    return this.http.get(this.url3 + '/Productwithimages/' + id);
   }
 
   addtoCart(data: any) {
@@ -137,14 +149,25 @@ export class RestService {
     return this.http.get(this.url3 + '/Information', { headers });
   }
 
-  Addwishlist() {
-    this._state.checktoken();
-    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
-    return this.http.post(this.url3 + "/AddWishlist", { headers });
+  // Addwishlist() {
+  //   this._state.checktoken();
+  //   const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+  //   return this.http.post(this.url3 + "/AddWishlist", { headers });
+  // }
+
+  togglelike(Product_id: number) {
+    this.products[Product_id].liked == !this.products[Product_id].liked;
+    this.Addwishlists(Product_id).subscribe((data: any) => {
+      console.log(data);
+      this.Wishlist = data.data;
+    })
   }
 
   Addwishlists(Product_id: number) {
-    return this.http.post('http://localhost:5000/AddWishlist', { Product_id: Product_id });
+    this._state.checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this.http.post(this.url3 + '/Addwishlist',Product_id,{headers});
+    // return this.http.post('http://localhost:5000/AddWishlist',{headers}, Product_id );
   }
 
   Wishlists() {

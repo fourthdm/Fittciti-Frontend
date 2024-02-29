@@ -100,7 +100,7 @@
                         <div class="carousel-item ">
                             <div *ngFor="let image of images; let i = index" [class.active]="i === 0"
                                 class="carousel-item">
-                                <img [src]="image.mainimage" class="d-block w-100" alt="Slide {{i}}">
+                                <img src="https://fourthdm-web-data.s3.ap-south-1.amazonaws.com/#{{image.mainimage}}" class="d-block w-100" alt="Slide {{i}}">
                             </div>
                             <!-- <img src="/assets/product/new/png/Front.png" class="d-block w-100" alt="..."> -->
                         </div>

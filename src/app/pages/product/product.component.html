@@ -35,11 +35,10 @@
                                     <div class="">
                                         <div class="text-end">
                                             <i class="fa-solid fa-heart fa-xl" [ngStyle]="{'color':liked ? 'red':''}"
-                                                (click)="addToWishlist(Product_id)"></i>
+                                                (click)="togglelike(id)"></i>
                                         </div>
-                                        <img src="/assets/product/new/1.jpg" alt=""  [routerLink]="['/viewproduct']">
-                                        <img  [src]="p.image"
-                                            [routerLink]="['/viewproduct']">
+                                        <!-- <img src="/assets/product/new/1.jpg" alt="" (click)="views()" [routerLink]="['/viewproduct']"> -->
+                                        <img  src="https://fourthdm-web-data.s3.ap-south-1.amazonaws.com/#1707209867566.jpg" [routerLink]="['/viewproduct',id]">
                                         <div class="card-body">
                                             <p>{{p.Product_Name}} <br> <span>{{p.Weight}}</span></p>
                                             <p>Rs <s style="color: red;">{{p.Price}} </s> <span

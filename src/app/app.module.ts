@@ -42,12 +42,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ViewproductComponent } from './pages/viewproduct/viewproduct.component';
 import { BuildsComponent } from './brands/builds/builds.component';
 
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { CartsComponent } from './pages/carts/carts.component';
 import { CartsssComponent } from './common/cartsss/cartsss.component';
 import { RegisterComponent } from './common/register/register.component';
 import { OrderComponent } from './common/order/order.component';
 import { UserdetailsComponent } from './common/userdetails/userdetails.component';
+import { CartComponent } from './common/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -89,20 +90,21 @@ import { UserdetailsComponent } from './common/userdetails/userdetails.component
     CartsssComponent,
     RegisterComponent,
     OrderComponent,
-    UserdetailsComponent
+    UserdetailsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule ,
+    RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule
-     
+
   ],
-  providers: [{ provide: APP_BASE_HREF, useValue:'/' }],
+  providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

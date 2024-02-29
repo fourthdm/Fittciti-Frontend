@@ -14,7 +14,7 @@
 
                     <select class="form-select form-select-lg" aria-label="Large select example">
                         <option selected><b>All Category's</b></option>
-                        <option *ngFor="let c of category, let i=index" [value]="c.category_id">{{c.Categories_Name }}
+                        <option *ngFor="let c of category, let i=index" [value]="c.Category_id">{{c.Category_Name }}
                         </option>
 
                     </select>
@@ -41,7 +41,7 @@
                         </option>
 
                     </select>
-                    <br><br>
+                    <br>
                     <!-- <div class="div" *ngFor="let c of brands, let i=index">
                         <input type="checkbox"> <label for="">{{c.Brand_Name }}</label>
                     </div> -->
@@ -49,6 +49,9 @@
             </div>
             <br>
 
+            <label>
+                <button class="btn btn-outline-success" (click)="getallproduct()">Go</button>
+            </label> <br><br>
             <!-- <button (click)="filter()" class="btn btn-primary mt-4">Filter</button> -->
         </div><br>
         <div class="col-lg-4 col-md-6" *ngFor="let p of product , let i=index">

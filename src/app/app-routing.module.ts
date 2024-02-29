@@ -33,6 +33,7 @@ import { CartsComponent } from './pages/carts/carts.component';
 import { CartsssComponent } from './common/cartsss/cartsss.component';
 import { RegisterComponent } from './common/register/register.component';
 import { UserdetailsComponent } from './common/userdetails/userdetails.component';
+import { CartComponent } from './common/cart/cart.component';
 
 
 const routes: Routes = [
@@ -43,15 +44,16 @@ const routes: Routes = [
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'viewproduct/:id', component: ViewproductComponent },
   { path: 'userdetails', component: UserdetailsComponent },
   { path: 'cart', component: CartsComponent },
+  { path: 'ca', component: CartComponent },
   { path: 'Cartts', component: CartsssComponent },
 
   { path: 'term', component: TermComponent },
   { path: 'refund', component: RefundComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: 'delivery', component: DeliveryComponent },
-  { path: 'viewproduct', component: ViewproductComponent },
 
   { path: 'gooddiet', component: DietComponent },
   { path: 'goodsupplement', component: SupplementComponent },

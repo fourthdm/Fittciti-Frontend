@@ -2,10 +2,19 @@
     <br><br><br><br>
     <div class="container"> <br>
 
-        <div class="text-center">
+        <div class="text">
             <h2>User Details</h2>
+            <div class="card" *ngFor="let u of Users,let i=index">
+                <div class="card-body">
+                    <h5> Name: {{u.Name}} </h5>
+                    <h5> UserName: {{u.Username}} </h5>
+                    <h5> Email: {{u.Email}} </h5>
+                    <h5> Address: {{u.Address}} </h5>
+                    <h5> Mobileno: {{u.Mobileno}} </h5>
+                </div>
+            </div>
         </div>
-        <div class="container table-responsive">
+        <!-- <div class="container table-responsive">
             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Wishlist
             </button>
@@ -26,9 +35,7 @@
                 <tbody>
                     <tr *ngFor="let c of u  | paginate : {itemsPerPage : 10 , currentPage : pro}; let i = index">
                         <td>{{i+1}}</td>
-                        <!-- <th scope="row">{{c.cart_id}}</th> -->
-                        <!-- <td>{{c.title}}</td> -->
-                        <!-- <td> <img style="width: 120px;" src="{{c.image}}" alt=""> </td> -->
+                   
                         <td style="width: 25%;">{{c.productname}}</td>
                         <th style="width: 12%;">{{c.price}}</th>
                         <td style="width: 12%;">{{c.grandTotal}}</td>
@@ -39,7 +46,7 @@
                     <pagination-controls (pageChange)="pro = $event"></pagination-controls>
                 </tbody>
             </table>
-        </div>
+        </div> -->
     </div>
 
     <!-- Button trigger modal -->
@@ -78,11 +85,11 @@
                 <div class="modal-body">
                     <div class="card" *ngFor="let u of Users,let i=index">
                         <div class="card-body">
-                            <h5> Name: {{u.Name}}           </h5>
-                            <h5> UserName: {{u.Username}}   </h5>
-                            <h5> Email: {{u.Email}}         </h5>
-                            <h5> Address: {{u.Address}}     </h5>
-                            <h5> Mobileno: {{u.Mobileno}}   </h5>
+                            <h5> Name: {{u.Name}} </h5>
+                            <h5> UserName: {{u.Username}} </h5>
+                            <h5> Email: {{u.Email}} </h5>
+                            <h5> Address: {{u.Address}} </h5>
+                            <h5> Mobileno: {{u.Mobileno}} </h5>
                         </div>
                     </div>
                 </div>
@@ -94,4 +101,3 @@
     </div>
 
 </div>
-

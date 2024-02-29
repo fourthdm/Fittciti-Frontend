@@ -221,12 +221,14 @@
                                     <div class="card">
                                         <div class="">
                                             <div class="text-end">
-                                                <i class="fa-regular fa-heart fa-xl"></i>
+                                                <i class="fa-solid fa-heart fa-xl"
+                                                    [ngStyle]="{'color':liked ? 'red':''}"
+                                                    (click)="toggleliked(this.Product_id)"></i>
                                             </div>
                                             <img [src]="p.image" width="100%" [routerLink]="['/viewproduct']">
                                             <div class="card-body">
                                                 <!-- <p>{{p.Product_Name}} <br> <span>{{p.Weight}}</span></p> -->
-                             
+
                                                 <p style="font-size: 13px;"><b>{{p.Product_Name}}</b></p>
                                                 <p style="font-size: small;">{{p.Weight}} SER</p>
                                                 <p style="font-size: small;">&#8377; {{p.Price}}</p>

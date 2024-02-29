@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { RestService } from 'src/app/rest.service';
 
 @Component({
@@ -11,16 +11,20 @@ export class MbComponent implements OnInit {
   category: any[] = [];
   brands: any[] = [];
 
+  @Input() Category_id: any;
+  @Input() Brand_id: any;
+
   constructor(private rest: RestService) { }
 
   ngOnInit(): void {
     this.getbyid(3);
     this.Allbrands();
+   this.getallproduct();
     this.Allcategory();
   }
 
   getbyid(Brand_id: any) {
-    this.rest.getbybrandid(Brand_id).subscribe((data: any) => {
+    this.rest.GetproductbyBrandid(Brand_id).subscribe((data: any) => {
       console.log(data);
       this.product = data.data;
     }, (err: any) => {
@@ -29,7 +33,7 @@ export class MbComponent implements OnInit {
   }
 
   Allcategory() {
-    this.rest.category().subscribe((data: any) => {
+    this.rest.Category().subscribe((data: any) => {
       console.log(data);
       this.category = data.data;
     }, (err) => {
@@ -38,12 +42,21 @@ export class MbComponent implements OnInit {
   }
 
   Allbrands() {
-    this.rest.brand().subscribe((data: any) => {
+    this.rest.Brand().subscribe((data: any) => {
       console.log(data);
       this.brands = data.data;
     }, (err) => {
       console.log(err);
     })
+  }
+
+  getallproduct() {
+    this.rest.Getproductbycategoryandbrand({ Category_id: this.Category_id, Brand_id: this.Brand_id }).subscribe((data: any) => {
+      console.log(data);
+      this.product = data.data;
+    }), (err: any) => {
+      console.log(err);
+    }
   }
 
 }

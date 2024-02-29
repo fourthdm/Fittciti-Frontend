@@ -16,7 +16,8 @@ export class ViewproductComponent implements OnInit {
   Prod_id = 0;
   images: any[] = [];
 
-  @Input() product_id = 0;
+  id = 0;
+  // myindex = -1;
 
   constructor(private rest: RestService, private _route: ActivatedRoute) { }
 
@@ -30,11 +31,19 @@ export class ViewproductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.id = this._route.snapshot.params['id'];
+    this.rest.Productsviews(this.id).subscribe((data: any) => {
+      console.log(data['data'][0]);
+      this.products = data['data'][0];
+    }, err => {
+      console.log(err);
+    })
+
     this.AllProducts();
     // this.fetchimage();
-    this.views();
+    // this.views();
 
-    
+
   }
 
   AllProducts() {
@@ -44,36 +53,45 @@ export class ViewproductComponent implements OnInit {
     //   this.products = data['data'][0];
     // })
 
-    this.rest.Product().subscribe((data: any) => {
-      console.log(data);
-      this.products = data.data;
-    }, (err) => {
-      console.log(err);
-    })
+    // this.rest.Product().subscribe((data: any) => {
+    //   console.log(data);
+    //   this.products = data.data;
+    // }, (err) => {
+    //   console.log(err);
+    // })
   }
 
-  views() {
-    this.rest.imagearray(1).subscribe(data => {
-      console.log(data);
-      this.images = (data as any)['data'];
-    }, err => {
-      console.log(err);
-    })
-  }
+  // views() {
+  //   this.rest.imagearray(1).subscribe(data => {
+  //     console.log(data);
+  //     this.images = (data as any)['data'];
+  //   }, err => {
+  //     console.log(err);
+  //   })
 
 
 
-// fetchimage(product_id: number) {
-//   this.rest.imagearray(product_id).subscribe((data: any) => {
-//     console.log(data);
-//     this.images = (data as any)['data'];
-//   }, (err: any) => {
-//     console.log(err)
-//   });
-// }
+
+  // fetchimage(product_id: number) {
+  //   this.rest.imagearray(product_id).subscribe((data: any) => {
+  //     console.log(data);
+  //     this.images = (data as any)['data'];
+  //   }, (err: any) => {
+  //     console.log(err)
+  //   });
+  // }
 
   // view() {
   //   this.rest.getproductbyid(this.Prod_id).subscribe(data => {
+  //     console.log(data);
+  //     this.products = (data as any)['data'];
+  //   }, (err: any) => {
+  //     console.log(err);
+  //   })
+  // }
+
+  // view() {
+  //   this.rest.Productsviews(this.product_id).subscribe(data => {
   //     console.log(data);
   //     this.products = (data as any)['data'];
   //   }, (err: any) => {
