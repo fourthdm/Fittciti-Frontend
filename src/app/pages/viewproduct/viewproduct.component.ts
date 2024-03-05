@@ -31,18 +31,18 @@ export class ViewproductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = this._route.snapshot.params['id'];
-    this.rest.Productsviews(this.id).subscribe((data: any) => {
-      console.log(data['data'][0]);
-      this.products = data['data'][0];
-    }, err => {
-      console.log(err);
-    })
+    // this.id = this._route.snapshot.params['id'];
+    // this.rest.Productsviews(this.id).subscribe((data: any) => {
+    //   console.log(data['data'][0]);
+    //   this.products = data['data'][0];
+    // }, err => {
+    //   console.log(err);
+    // })
 
     this.AllProducts();
     // this.fetchimage();
-    // this.views();
-
+    this.view();
+    this.show();
 
   }
 
@@ -53,12 +53,12 @@ export class ViewproductComponent implements OnInit {
     //   this.products = data['data'][0];
     // })
 
-    // this.rest.Product().subscribe((data: any) => {
-    //   console.log(data);
-    //   this.products = data.data;
-    // }, (err) => {
-    //   console.log(err);
-    // })
+    this.rest.Product().subscribe((data: any) => {
+      console.log(data);
+      this.products = data.data;
+    }, (err) => {
+      console.log(err);
+    })
   }
 
   // views() {
@@ -90,16 +90,22 @@ export class ViewproductComponent implements OnInit {
   //   })
   // }
 
-  // view() {
-  //   this.rest.Productsviews(this.product_id).subscribe(data => {
-  //     console.log(data);
-  //     this.products = (data as any)['data'];
-  //   }, (err: any) => {
-  //     console.log(err);
-  //   })
-  // }
+  view() {
+    this.rest.Productsviews(this.id).subscribe(data => {
+      console.log(data);
+      this.products = (data as any)['data'];
+    }, (err: any) => {
+      console.log(err);
+    })
+  }
 
-
+  show() {
+    this.rest.Getimages().subscribe((data: any) => {
+      console.log(data);
+      // this.Imagess = data.data;
+      this.images = (data as any)['data'];
+    }, (err: any) => console.log(err));
+  }
 
 }
 

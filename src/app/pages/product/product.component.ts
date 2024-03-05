@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StateService } from 'src/app/state.service';
 import { HttpClient } from '@angular/common/http';
 import { CartsssComponent } from 'src/app/common/cartsss/cartsss.component';
+import { CarttssService } from 'src/app/carttss.service';
 
 @Component({
   selector: 'app-product',
@@ -24,6 +25,9 @@ export class ProductComponent implements OnInit {
   @Input() Brand_id: any;
   @Input() liked: boolean = false;
   @Input() id = 0;
+  @Input() product_id: any;
+
+  s3image: any[] = [];
 
   images: [] = [];
   productList: any;
@@ -36,19 +40,14 @@ export class ProductComponent implements OnInit {
   //   Total: any
   // }]
   constructor(private rest: RestService, private cart: CartService, private _router: Router, private _route: ActivatedRoute,
-    private state: StateService, private http: HttpClient, private _cart: CartsssComponent) { }
+    private state: StateService, private http: HttpClient, private _cart: CarttssService) { }
 
   ngOnInit(): void {
 
 
     this.rest.Product().subscribe(resp => {
       this.productList = resp;
-
-      this.productList.forEach((a: any) => {
-        Object.assign(a, { quantity: 1, total: a.price });
-      });
     })
-
     this.id = this._route.snapshot.params['id'];
     this.rest.Productsviews(this.id).subscribe((data: any) => {
       console.log(data['data'][0]);
@@ -108,7 +107,7 @@ export class ProductComponent implements OnInit {
   getallproduct() {
     this.rest.Getproductbycategoryandbrand({ Category_id: this.Category_id, Brand_id: this.Brand_id }).subscribe((data: any) => {
       console.log(data);
-      this.prod = data.data;
+      this.productList = data.data;
     }), (err: any) => {
       console.log(err);
     }
@@ -165,17 +164,23 @@ export class ProductComponent implements OnInit {
   //   });
   // }
 
-  // Addcart(data:any){
-  //   this.rest.ADDCARTS(data).subscribe((data: any) => {
-  //   console.log(data);
-  //   localStorage.setItem('token', data.data);
-  //   this.state.token = (data.data);
-  //   this.state.decodeToken();
-  //   this._router.navigate(['/Cartts']);
-  // }, err => {
-  //   console.log(err);
-  // })
-  // }
+  Addcarts(data: any) {
+    localStorage.getItem('token');
+    this.rest.addtoCart(data).subscribe((data: any) => {
+      console.log(data);
+
+      // this.state.token = (data.data);
+      // this.state.decodeToken();
+      this.carts.push(data);
+      this._router.navigate(['/Cartts']);
+    }, err => {
+      console.log(err);
+    })
+
+    this._router.navigate(['/Login']);
+
+
+  }
 
   // getcarts() {
   //   this.rest.cart().subscribe((data: any) => {
@@ -195,7 +200,7 @@ export class ProductComponent implements OnInit {
   // }
 
   addToCart(product: any) {
-    this._cart.Addcarts(product);
+    this._cart.addtoCart(product);
   }
 
 
@@ -224,6 +229,15 @@ export class ProductComponent implements OnInit {
     this.rest.Productsviews(this.id).subscribe(data => {
       console.log(data);
       this.prod = (data as any)['data'];
+    }, err => {
+      console.log(err);
+    })
+  }
+
+  imges() {
+    this.rest.Getimages().subscribe(data => {
+      console.log(data);
+      this.images = (data as any)["data"];
     }, err => {
       console.log(err);
     })
