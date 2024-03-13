@@ -68,4 +68,8 @@ export class CartComponent implements OnInit {
     Razorpay.open(razorpayoption, successCallback, failurecallback)
   }
 
+  placeorder() {
+    
+  }
+
 }

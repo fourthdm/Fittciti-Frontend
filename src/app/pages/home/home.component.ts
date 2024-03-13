@@ -8,8 +8,9 @@ import { StateService } from 'src/app/state.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  
   pq: number = 1
-
+  productList: any[] = [];
   products: any[] = [];
   wishlist: any[] = [];
   @Input() liked: boolean = false;
@@ -38,7 +39,14 @@ export class HomeComponent implements OnInit {
   constructor(private rest: RestService, private state: StateService) { }
 
   ngOnInit(): void {
-    this.getproducts()
+
+    this.rest.homeproduct().subscribe((data: any) => {
+      this.productList = data.data;
+    }, (err: any) => {
+      console.log(err);
+    })
+
+    // this.getproducts();
   }
 
   getproducts() {

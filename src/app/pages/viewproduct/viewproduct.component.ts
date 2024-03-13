@@ -15,6 +15,8 @@ export class ViewproductComponent implements OnInit {
 
   Prod_id = 0;
   images: any[] = [];
+  productList: any[] = [];
+
 
   id = 0;
   // myindex = -1;
@@ -39,11 +41,26 @@ export class ViewproductComponent implements OnInit {
     //   console.log(err);
     // })
 
-    this.AllProducts();
+    this.getproduct();
+    // this.AllProducts();
     // this.fetchimage();
-    this.view();
+    // this.view();
     this.show();
 
+  }
+
+  getproduct() {
+    const id = this._route.snapshot.paramMap.get('id');
+    console.log(id);
+    id && this.rest.productwithmain(id).subscribe((data: any) => {
+      this.productList = data.data;
+    }, (err: any) => {
+      console.log(err);
+    })
+
+    this.productList.forEach((a: any) => {
+      Object.assign(a, { quantity: 1, total: a.pricewithdiscount });
+    });
   }
 
   AllProducts() {
@@ -81,14 +98,7 @@ export class ViewproductComponent implements OnInit {
   //   });
   // }
 
-  // view() {
-  //   this.rest.getproductbyid(this.Prod_id).subscribe(data => {
-  //     console.log(data);
-  //     this.products = (data as any)['data'];
-  //   }, (err: any) => {
-  //     console.log(err);
-  //   })
-  // }
+
 
   view() {
     this.rest.Productsviews(this.id).subscribe(data => {
@@ -106,6 +116,8 @@ export class ViewproductComponent implements OnInit {
       this.images = (data as any)['data'];
     }, (err: any) => console.log(err));
   }
+
+  addToCart() { }
 
 }
 

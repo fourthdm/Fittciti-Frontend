@@ -89,7 +89,7 @@ export class CartsssComponent implements OnInit {
     return grandTotal;
   }
 
-  g(){}
+  g() { }
 
 
   getcarts() {
@@ -152,6 +152,19 @@ export class CartsssComponent implements OnInit {
     }
     Razorpay.open(razorpayoption, successCallback, failurecallback)
   }
+  // placeOrder() {
+  //   this.checkoutObj.checkoutObj =  this.loggedObj.custId;
+  //   this.productSrv.PlaceOrder(this.checkoutObj).subscribe((res: any)=> {
+  //     if(res.result) { 
+  //       this.productSrv.cartUpdated.next(true);
+  //       alert("Order Has Been Succefully Placed")
+  //     } else {
+  //       alert(res.message)
+  //     }
+  //   })
+  // } 
+
+  placeorder() { }
 
   emptycart() { }
 

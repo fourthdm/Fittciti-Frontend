@@ -216,16 +216,16 @@
                         </div>
                         <br><br><br>
                         <div class="row">
-                            <div class=" col-lg-4 col-md-6" *ngFor="let p of products, let i= index ">
+                            <div class=" col-lg-4 col-md-6" *ngFor="let p of productList, let i= index ">
                                 <div class="container">
                                     <div class="card">
                                         <div class="">
-                                            <div class="text-end">
+                                            <!-- <div class="text-end">
                                                 <i class="fa-solid fa-heart fa-xl"
                                                     [ngStyle]="{'color':liked ? 'red':''}"
                                                     (click)="toggleliked(this.Product_id)"></i>
-                                            </div>
-                                            <img [src]="p.image" width="100%" [routerLink]="['/viewproduct']">
+                                            </div> -->
+                                            <img [src]="p.image" width="100%" [routerLink]="['/viewproduct',p.id]">
                                             <div class="card-body">
                                                 <!-- <p>{{p.Product_Name}} <br> <span>{{p.Weight}}</span></p> -->
 

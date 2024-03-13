@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { StateService } from './state.service';
 
 @Injectable({
@@ -8,8 +8,8 @@ import { StateService } from './state.service';
 })
 export class RestService {
 
-  products:any[]=[];
-  Wishlist:any[]=[];
+  products: any[] = [];
+  Wishlist: any[] = [];
 
   public cartitems: any[] = [];
   public cartslist = new BehaviorSubject<any>([])
@@ -95,7 +95,7 @@ export class RestService {
 
 
 
-  
+
 
   url3 = 'http://localhost:5000';
 
@@ -111,7 +111,11 @@ export class RestService {
     return this.http.get(this.url3 + '/Product');
   }
 
-  Productsviews(id:number){
+  imgpro() {
+    return this.http.get(this.url3 + '/IProuct');
+  }
+
+  Productsviews(id: number) {
     return this.http.get(this.url3 + '/Productwithimages/' + id);
   }
 
@@ -166,7 +170,7 @@ export class RestService {
   Addwishlists(Product_id: number) {
     this._state.checktoken();
     const headers = new HttpHeaders({ 'x-access-token': this._state.token });
-    return this.http.post(this.url3 + '/Addwishlist',Product_id,{headers});
+    return this.http.post(this.url3 + '/Addwishlist', Product_id, { headers });
     // return this.http.post('http://localhost:5000/AddWishlist',{headers}, Product_id );
   }
 
@@ -202,6 +206,18 @@ export class RestService {
 
   imagearray(product_id: number) {
     return this.http.get(this.url3 + '/Productwithimages/' + product_id);
+  }
+
+  productwithmain(id: string) {
+    return this.http.get(this.url3 + '/Productwithimages/' + id);
+  }
+
+  PlaceOrder(obj: any): Observable<any> {
+    return this.http.post<any>(this.url3 + '/Addorder', obj);
+  }
+
+  homeproduct() {
+    return this.http.get(this.url + '/homeProduct');
   }
 
 }
