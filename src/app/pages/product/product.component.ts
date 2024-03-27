@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart.service';
 import { RestService } from 'src/app/rest.service';
 import { CartsComponent } from '../carts/carts.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { StateService } from 'src/app/state.service';
 import { HttpClient } from '@angular/common/http';
 import { CartsssComponent } from 'src/app/common/cartsss/cartsss.component';
@@ -27,6 +27,8 @@ export class ProductComponent implements OnInit {
   @Input() id = 0;
   @Input() product_id: any;
 
+  productQuantity: number = 1;
+
   s3image: any[] = [];
 
   images: [] = [];
@@ -43,7 +45,6 @@ export class ProductComponent implements OnInit {
     private state: StateService, private http: HttpClient, private _cart: CarttssService) { }
 
   ngOnInit(): void {
-
 
     this.rest.Product().subscribe(resp => {
       this.productList = resp;
@@ -169,17 +170,43 @@ export class ProductComponent implements OnInit {
     this.rest.addtoCart(data).subscribe((data: any) => {
       console.log(data);
 
-      // this.state.token = (data.data);
-      // this.state.decodeToken();
+      this.state.token = (data.data);
+      this.state.decodeToken();
       this.carts.push(data);
       this._router.navigate(['/Cartts']);
     }, err => {
       console.log(err);
     })
 
-    this._router.navigate(['/Login']);
+    this._router.navigate(['/login']);
 
 
+  }
+
+  asyncddToCart() {
+    if (this.productList) {
+      this.productList.quantity = this.productQuantity;
+      if (!localStorage.getItem('user')) {
+        this.rest.addtoCart(this.productList);
+
+      } else {
+        let user = localStorage.getItem('user');
+        let userId = user && JSON.parse(user).id;
+        let cart: any = {
+          ...this.productList,
+          productId: this.productList.id,
+          userId
+        }
+        // delete cartData.id;
+        // this.product.addToCart(cartData).subscribe((result) => {
+        //   if (result) {
+        //     this.product.getCartList(userId);
+        //     this.removeCart = true
+        //   }
+        // })
+      }
+
+    }
   }
 
   // getcarts() {
@@ -241,6 +268,21 @@ export class ProductComponent implements OnInit {
     }, err => {
       console.log(err);
     })
+  }
+
+  Car(Product_id: number, Quantity: number): void {
+    this.rest.addToCart(Product_id, Quantity).subscribe(
+      response => {
+        // Handle success response
+        console.log(response);
+        this.carts = response
+        // Optionally, update cartItems array with the newly added item
+      },
+      error => {
+        // Handle error response
+        console.error(error);
+      }
+    );
   }
 
 }

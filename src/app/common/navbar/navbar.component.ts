@@ -12,6 +12,9 @@ import { StateService } from 'src/app/state.service';
 })
 export class NavbarComponent implements OnInit {
 
+
+  searchResults: any[] = [];
+
   pro: any;
   showproduct: any[] = [];
 
@@ -28,7 +31,7 @@ export class NavbarComponent implements OnInit {
       behavior: 'smooth'
     })
   }
-  constructor(private rest: RestService, private cart: CartService, private _router: Router,private _state:StateService) {
+  constructor(private rest: RestService, private cart: CartService, private _router: Router, private _state: StateService) {
 
   }
   ngOnInit(): void {
@@ -68,5 +71,12 @@ export class NavbarComponent implements OnInit {
   //     console.log(err)
   //   })
   // }
+
+
+  performSearch(searchTerm: string) {
+    // Implement your search logic here
+    console.log('Performing search for:', searchTerm);
+    this.searchResults = (searchTerm as any).data;
+  }
 
 }

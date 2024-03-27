@@ -11,9 +11,9 @@ import { StateService } from 'src/app/state.service';
 })
 export class RegisterComponent implements OnInit {
 
-  registerform: FormGroup;
+      registerform: FormGroup;
 
-  user: any[] = [];
+      user: any[] = [];
 
   constructor(private _rest: RestService, private _state: StateService, private _router: Router) {
     this.registerform = new FormGroup({

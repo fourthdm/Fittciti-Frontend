@@ -99,6 +99,12 @@ export class RestService {
 
   url3 = 'http://localhost:5000';
 
+  addToCart(Product_id: number, Quantity: number): Observable<any> {
+    this._state.checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this.http.post<any>(this.url3 + '/AddCart', { Product_id: Product_id, Quantity: Quantity, headers });
+  }
+
   Login(data: any) {
     return this.http.post(this.url3 + '/login', data);
   }
@@ -137,10 +143,10 @@ export class RestService {
     return this.http.delete(this.url3 + "/Emptycart/" + data.Cart_id, { headers })
   }
 
-  DeletebyProduct(data: any) {
+  DeletebyProduct(Product_id: any) {
     this._state.checktoken();
     const headers = new HttpHeaders({ 'x-access-token': this._state.token });
-    return this.http.delete(this.url3 + "/DeletebyProduct/" + data.Product_id, { headers });
+    return this.http.delete(this.url3 + "/DeletebyProduct/" + Product_id, { headers });
   }
 
   enquiry(data: any) {
@@ -217,7 +223,7 @@ export class RestService {
   }
 
   homeproduct() {
-    return this.http.get(this.url + '/homeProduct');
+    return this.http.get(this.url3 + '/homeProduct');
   }
 
 }

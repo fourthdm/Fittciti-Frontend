@@ -49,6 +49,7 @@ import { RegisterComponent } from './common/register/register.component';
 import { OrderComponent } from './common/order/order.component';
 import { UserdetailsComponent } from './common/userdetails/userdetails.component';
 import { CartComponent } from './common/cart/cart.component';
+import { SearchComponent } from './common/search/search.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { CartComponent } from './common/cart/cart.component';
     RegisterComponent,
     OrderComponent,
     UserdetailsComponent,
-    CartComponent
+    CartComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

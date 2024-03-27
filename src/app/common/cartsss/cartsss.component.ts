@@ -20,6 +20,8 @@ export class CartsssComponent implements OnInit {
   total: number = 0;
 
   public grandTotal !: number;
+  public finalTotal !: number;
+
 
   constructor(private rest: RestService, private cart: CartService, private route: Router) { }
 
@@ -91,6 +93,13 @@ export class CartsssComponent implements OnInit {
 
   g() { }
 
+  getFinaltotalPrice(): number {
+    let finalTotal = 0;
+    this.carts.map((a: any) => {
+      finalTotal += a.Total;
+    })
+    return finalTotal;
+  }
 
   getcarts() {
     this.rest.cart().subscribe((data: any) => {
@@ -113,14 +122,15 @@ export class CartsssComponent implements OnInit {
   }
 
   removeItem(Product_id: any) {
+
     this.rest.DeletebyProduct(Product_id).subscribe((data: any) => {
       console.log(data);
       this.getcarts();
     }, (err: any) => {
       console.log(err);
-
     })
   }
+
   paynow() {
     const razorpayoption = {
       description: 'sample razorpay demo',

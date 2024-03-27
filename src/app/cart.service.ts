@@ -32,6 +32,9 @@ export class CartService {
     return grandTotal;
   }
 
+ 
+
+
   addtoCart(product: any) {
     this.cartitems.push(product);
     this.cartslist.next(this.cartitems);
@@ -40,7 +43,6 @@ export class CartService {
   }
 
   add() {
-
   }
 
   // remove single item
@@ -61,4 +63,5 @@ export class CartService {
     this.cartitems = [];
     this.cartslist.next(this.cartitems);
   }
+
 }
