@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-// import jwt_decode from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class StateService {
   constructor(private _router: Router) { }
 
   decodeToken() {
-    // this.report = jwt_decode(this.token);
+    this.report = jwtDecode(this.token);
     console.log(this.report);
   }
 

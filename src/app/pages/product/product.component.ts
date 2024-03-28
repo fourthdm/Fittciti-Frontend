@@ -156,14 +156,14 @@ export class ProductComponent implements OnInit {
   }
 
 
-  // Addcart(data: any) {    
-  //   this.rest.addtoCart(data).subscribe((data: any) => {
-  //     console.log(data);
-  //     this.carts.push();
-  //     this.cart.getTotalPrice();
-  //     // this._router.navigate(['/Cartts']);
-  //   });
-  // }
+  Addcart(data: any) {    
+    this.rest.addtoCart(data).subscribe((data: any) => {
+      console.log(data);
+      this.carts.push();
+      this.cart.getTotalPrice();
+      // this._router.navigate(['/Cartts']);
+    });
+  }
 
   Addcarts(data: any) {
     localStorage.getItem('token');
@@ -231,17 +231,17 @@ export class ProductComponent implements OnInit {
   }
 
 
-  Addcart(data: any) {
-    this.rest.addtoCart(data).subscribe((response: any) => {
-      console.log(response); // Log the response from adding to cart
-      this.carts.push(data); // Push the added data to the carts array
-      if (this.cart) {
-        this.cart.getTotalPrice(); // Call getTotalPrice() method if this.cart is defined
-      } else {
-        console.error('Cart is not defined.'); // Log an error if cart is not defined
-      }
-    });
-  }
+  // Addcart(data: any) {
+  //   this.rest.addtoCart(data).subscribe((response: any) => {
+  //     console.log(response); // Log the response from adding to cart
+  //     this.carts.push(data); // Push the added data to the carts array
+  //     if (this.cart) {
+  //       this.cart.getTotalPrice(); // Call getTotalPrice() method if this.cart is defined
+  //     } else {
+  //       console.error('Cart is not defined.'); // Log an error if cart is not defined
+  //     }
+  //   });
+  // }
 
   car() {
     this.rest.cart().subscribe((data: any) => {

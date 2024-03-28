@@ -154,7 +154,7 @@ export class RestService {
   }
 
   Users() {
-    // this._state.checktoken();
+    this._state.checktoken();
     const headers = new HttpHeaders({ 'x-access-token': this._state.token });
     return this.http.get(this.url3 + '/Information', { headers });
   }
@@ -176,7 +176,7 @@ export class RestService {
   Addwishlists(Product_id: number) {
     this._state.checktoken();
     const headers = new HttpHeaders({ 'x-access-token': this._state.token });
-    return this.http.post(this.url3 + '/Addwishlist', Product_id, { headers });
+    return this.http.post(this.url3 + '/AddWishlist', Product_id, { headers });
     // return this.http.post('http://localhost:5000/AddWishlist',{headers}, Product_id );
   }
 

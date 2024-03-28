@@ -122,7 +122,6 @@ export class CartsssComponent implements OnInit {
   }
 
   removeItem(Product_id: any) {
-
     this.rest.DeletebyProduct(Product_id).subscribe((data: any) => {
       console.log(data);
       this.getcarts();
